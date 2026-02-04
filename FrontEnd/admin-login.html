@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - IRO GEMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="payment.css"> <!-- Reuse form styles -->
+    <style>
+        .admin-login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+
+        .admin-login-container h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .error-msg {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">
+            <img src="Assets/LogoNew1.png" alt="logo" class="logo" />
+        </a>
+    </nav>
+
+    <div class="admin-login-container">
+        <h2>Admin Panel Access</h2>
+        <form id="admin-login-form">
+            <div class="inputBox" style="margin-bottom: 15px;">
+                <input type="email" id="admin-email" placeholder="Admin Email" required
+                    style="width: 100%; padding: 10px;">
+            </div>
+            <div class="inputBox" style="margin-bottom: 20px;">
+                <input type="password" id="admin-password" placeholder="Password" required
+                    style="width: 100%; padding: 10px;">
+            </div>
+            <button type="submit" class="button" style="width: 100%;">Login</button>
+            <p id="error-msg" class="error-msg">Invalid Credentials</p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            const errorMsg = document.getElementById('error-msg');
+
+            // Hardcoded credentials as requested by user
+            if (email === "umairthaslxxm@gmail.com" && password === "Catseye123@") {
+                // Success
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                // Fail
+                errorMsg.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

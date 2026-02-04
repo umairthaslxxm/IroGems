@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="feedback.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+  <script src="scripts.js"></script>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="auth-state.js"></script>
+
+  <!-- ✅ Correct EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof emailjs !== "undefined") {
+        emailjs.init("jyUg-6a4fjeAAEUFp"); // ✅ Your real EmailJS Public Key
+        console.log("✅ EmailJS initialized successfully");
+      } else {
+        console.error("❌ EmailJS failed to load. Check script link.");
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html">
+      <img src="Assets/LogoNew1.png" alt="logo" class="logo" />
+    </a>
+    <ul>
+      <li><a class="nav-item" href="index.html">Home</a></li>
+      <li><a class="nav-item" href="gallery.html">Gallery</a></li>
+      <li><a class="nav-item" href="shop.html">Shop</a></li>
+      <li><a class="nav-item active" href="feedback.html">Feedback</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Feedback</h1>
+    <form id="feedback-form" class="feedback-form">
+      <span class="red">* Required Fields</span>
+
+      <div class="input-container">
+        <label for="name">Name <span class="red">*</span></label>
+        <input id="name" name="name" type="text" required />
+      </div>
+
+      <div class="input-container">
+        <label for="email">Email <span class="red">*</span></label>
+        <input id="email" name="email" type="email" required />
+      </div>
+
+      <div class="input-container">
+        <label for="phone-number">Phone Number</label>
+        <input id="phone-number" name="phone-number" type="tel" />
+      </div>
+
+      <div class="input-container">
+        <label for="subject">Subject <span class="red">*</span></label>
+        <select id="subject" name="subject" required>
+          <option value="">-- Select a Subject --</option>
+          <option>General</option>
+          <option>Content Issue</option>
+          <option>Website Bug</option>
+          <option>Other (Please Specify)</option>
+        </select>
+      </div>
+
+      <div class="input-container">
+        <label for="message">Message <span class="red">*</span></label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+      </div>
+
+      <div class="input-container">
+        <label for="rating">Rate Your Experience <span class="red">*</span></label>
+        <select id="rating" name="rating" required>
+          <option value="">-- Select Rating --</option>
+          <option>5</option>
+          <option>4</option>
+          <option>3</option>
+          <option>2</option>
+          <option>1</option>
+        </select>
+      </div>
+
+      <div class="button-container">
+        <button type="reset" class="secondary-button">Reset</button>
+        <button class="button" type="button" onclick="showPreview()">Submit</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Preview Modal -->
+  <div id="previewModal" class="previewbox">
+    <div class="previewcontent">
+      <h2>Preview Your Feedback</h2>
+      <p><strong>Name:</strong> <span id="previewName"></span></p>
+      <p><strong>Email:</strong> <span id="previewEmail"></span></p>
+      <p><strong>Phone Number:</strong> <span id="previewNumber"></span></p>
+      <p><strong>Subject:</strong> <span id="previewSubject"></span></p>
+      <p><strong>Message:</strong> <span id="previewMessage"></span></p>
+      <p><strong>Rating:</strong> <span id="previewRating"></span></p>
+      <div class="button-feedback">
+        <button class="secondary-button" type="button" onclick="editForm()">Edit</button>
+        <button class="button" type="button" onclick="submitForm()">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="pagefooter">
+    <p>Developed by <a href="UmairPageEditor.html" target="_blank">Umair Thasleem</a></p>
+  </div>
+  <div class="pagefooter">
+    <p>&copy; 2025 IRO GEMS. All rights reserved.</p>
+  </div>
+
+  <!-- Back to top -->
+  <a class="btt-btn" href="#top" id="back-to-top">
+    <img src="Assets/btt.svg" class="btt-icon" alt="Back To Top Icon" />
+  </a>
+
+  <!-- ✅ Feedback Email Script -->
+  <script>
+    function showPreview() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value.trim();
+      const rating = document.getElementById('rating').value;
+
+      if (!name || !email || !subject || !message || !rating) {
+        alert('⚠️ Please fill in all required fields.');
+        return;
+      }
+
+      document.getElementById('previewName').innerText = name;
+      document.getElementById('previewEmail').innerText = email;
+      document.getElementById('previewNumber').innerText = document.getElementById('phone-number').value.trim();
+      document.getElementById('previewSubject').innerText = subject;
+      document.getElementById('previewMessage').innerText = message;
+      document.getElementById('previewRating').innerText = rating;
+      document.getElementById('previewModal').style.display = 'block';
+    }
+
+    function editForm() {
+      document.getElementById('previewModal').style.display = 'none';
+    }
+
+    function submitForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phoneNumber = document.getElementById('phone-number').value.trim();
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value.trim();
+      const rating = document.getElementById('rating').value;
+
+      const templateParams = {
+        name: name,
+        email: email,
+        phoneNumber: phoneNumber,
+        subject: subject,
+        message: message,
+        rating: rating
+      };
+
+      emailjs.send('service_jf60ixd', 'template_3esszp5', templateParams)
+        .then(function (response) {
+          console.log('✅ SUCCESS!', response.status, response.text);
+
+          // Save feedback to DB
+          fetch('http://localhost:5000/api/feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, message, rating })
+          }).then(res => console.log('Feedback API response:', res.status))
+            .catch(err => console.error('Feedback API error:', err));
+
+          alert('✅ Feedback sent successfully!');
+          document.getElementById('feedback-form').reset();
+          document.getElementById('previewModal').style.display = 'none';
+        }, function (error) {
+          console.error('❌ FAILED...', error);
+          alert('❌ Failed to send feedback. Please try again.');
+        });
+    }
+  </script>
+</body>
+
+</html>

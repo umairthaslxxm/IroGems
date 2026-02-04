@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="userprofie.css" />
+    <link rel="stylesheet" href="shop.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <script src="scripts.js"></script>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="auth-state.js"></script>
+
+
+</head>
+
+<body>
+    <!--Navigation Bar-->
+    <nav>
+        <a href="index.html">
+            <img src="Assets/LogoNew1.png" alt="logo" class="logo" />
+        </a>
+        <ul>
+            <li><a class="nav-item" href="index.html">Home</a></li>
+            <li><a class="nav-item" href="gallery.html">Gallery</a></li>
+            <li><a class="nav-item" href="shop.html">Shop</a></li>
+            <li><a class="nav-item" href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
+    <div class="bgk-title">
+        <header>
+            <div class="title">SHOP</div>
+
+            <div class="icon-cart">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" id="Cart">
+                    <path
+                        d="M14 36c-2.21 0-3.98 1.79-3.98 4s1.77 4 3.98 4 4-1.79 4-4-1.79-4-4-4zM2 4v4h4l7.19 15.17-2.7 4.9c-.31.58-.49 1.23-.49 1.93 0 2.21 1.79 4 4 4h24v-4H14.85c-.28 0-.5-.22-.5-.5 0-.09.02-.17.06-.24L16.2 26h14.9c1.5 0 2.81-.83 3.5-2.06l7.15-12.98c.16-.28.25-.61.25-.96a2 2 0 0 0-2-2H10.43l-1.9-4H2zm32 32c-2.21 0-3.98 1.79-3.98 4s1.77 4 3.98 4 4-1.79 4-4-1.79-4-4-4z"
+                        fill="#ffffff" class="color000000 svgShape"></path>
+                    <path fill="none" d="M0 0h48v48H0z"></path>
+                </svg>
+                <span>0</span>
+            </div>
+
+        </header>
+        <div class="listProduct">
+            <div class="item" data-id="1">
+                <img src="Assets/1.jpeg" alt="image">
+                <h2>6 CTS Precious Royal Blue sapphire </h2>
+                <div class="price">4500.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+            <div class="item" data-id="2">
+                <img src="Assets/2.jpeg" alt="image">
+                <h2>3 CTS Royal Blue Sapphire </h2>
+                <div class="price">3000.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+
+            <div class="item" data-id="3">
+                <img src="Assets/3.jpeg" alt="image">
+                <h2>4 Cts Cornflower Blue Sapphire</h2>
+                <div class="price">3500.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+
+            <div class="item" data-id="4">
+                <img src="Assets/4.jpeg" alt="image">
+                <h2>2.5 Cts Royal Blue Sapphire</h2>
+                <div class="price">2500.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+
+            </div>
+            <div class="item" data-id="5">
+                <img src="Assets/5.jpeg" alt="image">
+                <h2>2 Cts Vivid Blue Sapphire</h2>
+                <div class="price">1500.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+            <div class="item" data-id="6">
+                <img src="Assets/6.jpeg" alt="image">
+                <h2>1 Cts Royal Blue Sapphire</h2>
+                <div class="price">1000.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+            <div class="item" data-id="7">
+                <img src="Assets/7.jpeg" alt="image">
+                <h2>2.57 Cts Royal Vivid Blue Sapphire</h2>
+                <div class="price">2000.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+            <div class="item" data-id="8">
+                <img src="Assets/8.jpeg" alt="image">
+                <h2>1.53 Cts Cornflower Blue Sapphire</h2>
+                <div class="price">1300.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+            <div class="item" data-id="9">
+                <img src="Assets/9.jpeg" alt="image">
+                <h2>15 Pcs (1 Cts/Per) Royal Blue Sapphire</h2>
+                <div class="price">10,000.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+            <div class="item" data-id="10">
+                <img src="Assets/10.jpeg" alt="image">
+                <h2>18 Pcs (1.2 Cts/Per) Cornflower Blue Sapphire</h2>
+                <div class="price">12,500.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+            <div class="item" data-id="11">
+                <img src="Assets/11.jpeg" alt="image">
+                <h2>30 Pcs (1 Cts/Per) Cornflower Blue Sapphire</h2>
+                <div class="price">15,000.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+            <div class="item" data-id="12">
+                <img src="Assets/12.jpeg" alt="image">
+                <h2>13 Pcs (1.2 Cts/Per) Cornflower Blue Sapphire</h2>
+                <div class="price">9000.00GBP</div>
+                <button class="addCart button">Add To Cart</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="cartTab">
+        <h1>Shopping Cart</h1>
+        <div class="listCart">
+            <!-- Items in the cart will be listed here -->
+        </div>
+        <div class="btn">
+            <button class="close">CLOSE</button>
+            <a href="payment.html" class="checkOutButton">
+                <button class="checkOut">Check Out</button>
+            </a>
+        </div>
+    </div>
+
+
+
+
+    <!--Footer-->
+    <div class="pagefooter">
+        <p>Developed by Umair Thasleem</a></p>
+    </div>
+    <div class="pagefooter">
+        <p>&copy; 2025 IRO GEMS. All rights reserved.</p>
+
+    </div>
+
+    <!-- back to top -->
+    <a class="btt-btn" href="#top" id="back-to-top"><img src="Assets/btt.svg" class="btt-icon"
+            alt="Back To Top Icon" /></a>
+    <!-- Product Details Popup -->
+    <div id="productPopup" class="product-popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <img id="popupImage" src="" alt="Gem Image">
+            <h2 id="popupTitle"></h2>
+            <p id="popupPrice"></p>
+            <div id="popupDescription"></div>
+        </div>
+    </div>
+
+
+</body>
+<script src="shop.js"></script>
+
+</html>

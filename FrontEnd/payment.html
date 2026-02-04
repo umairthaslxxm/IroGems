@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="payment.css" />
+
+  <title>Payment Page</title>
+
+  <!-- ✅ Load EmailJS SDK first -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize EmailJS once the library is loaded
+      if (window.emailjs) {
+        emailjs.init("jyUg-6a4fjeAAEUFp");
+        console.log("✅ EmailJS initialized successfully");
+      } else {
+        console.error("❌ EmailJS failed to load!");
+      }
+    });
+  </script>
+
+  <!-- ✅ Payment Script -->
+  <script type="module" src="payment.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <form id="checkoutForm">
+      <div class="row">
+        <div class="col">
+          <h3 class="title">Contact Details</h3>
+
+          <div class="inputBox">
+            <span class="required">First Name :</span>
+            <input type="text" id="firstName" placeholder="Umair" required />
+          </div>
+
+          <div class="inputBox">
+            <span class="required">Surname :</span>
+            <input type="text" id="surname" placeholder="Thasleem" required />
+          </div>
+
+          <div class="inputBox">
+            <span class="required">Email :</span>
+            <input type="email" id="contactEmail" placeholder="example@gmail.com" required />
+          </div>
+
+          <div class="inputBox">
+            <span class="required">Mobile Number :</span>
+            <input type="text" id="mobileNumber" placeholder="+447429136268" required />
+          </div>
+
+          <h3 class="title">Billing Address</h3>
+
+          <div class="inputBox">
+            <span class="required">Full Name :</span>
+            <input type="text" id="fullName" placeholder="Umair Thasleem" required />
+          </div>
+
+          <div class="inputBox">
+            <span class="required">Email :</span>
+            <input type="email" id="billingEmail" placeholder="example@gmail.com" required />
+          </div>
+
+          <div class="inputBox">
+            <span class="required">Address :</span>
+            <input type="text" id="address" placeholder="No.189 Hagden Lane" required />
+          </div>
+
+          <div class="inputBox">
+            <span class="required">City :</span>
+            <input type="text" id="city" placeholder="Watford" required />
+          </div>
+
+          <div class="flex">
+            <div class="inputBox">
+              <span class="required">State :</span>
+              <input type="text" id="state" placeholder="United Kingdom" required />
+            </div>
+
+            <div class="inputBox">
+              <span class="required">Zip Code :</span>
+              <input type="text" id="zipCode" placeholder="WD18 7UD" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <h3 class="title">Payment</h3>
+
+          <div class="inputBox">
+            <span>Cards Accepted :</span>
+            <img src="Assets/card_img.png" alt="Cards Accepted" />
+          </div>
+
+          <div class="inputBox">
+            <span class="required">Name on Card :</span>
+            <input type="text" id="cardName" placeholder="Mr. Umair Thasleem" required />
+          </div>
+
+          <div class="inputBox">
+            <span class="required">Credit Card Number :</span>
+            <input type="number" id="cardNumber" placeholder="1111-2222-3333-4444" required />
+          </div>
+
+          <div class="inputBox">
+            <span class="required">Exp Month :</span>
+            <input type="text" id="expMonth" placeholder="October" required />
+          </div>
+
+          <div class="flex">
+            <div class="inputBox">
+              <span class="required">Exp Year :</span>
+              <input type="number" id="expYear" placeholder="2029" required />
+            </div>
+
+            <div class="inputBox">
+              <span class="required">CVV :</span>
+              <input type="text" id="cvv" placeholder="111" required />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ Confirm Button -->
+      <button type="submit" class="submit-btn">Confirm Order</button>
+    </form>
+
+    <div class="order-summary">
+      <h3 class="title">Order Summary</h3>
+      <div class="summary-content">
+        <!-- Order summary will be displayed here -->
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

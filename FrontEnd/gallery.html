@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="Gallery.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <script src="scripts.js"></script>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="auth-state.js"></script>
+</head>
+
+<body>
+    <!--Navigation Bar-->
+    <nav>
+        <a href="index.html">
+            <img src="Assets/LogoNew1.png" alt="logo" class="logo" />
+        </a>
+        <ul>
+            <li><a class="nav-item" href="index.html">Home</a></li>
+            <li><a class="nav-item" href="gallery.html">Gallery</a></li>
+            <li><a class="nav-item" href="shop.html">Shop</a></li>
+            <li><a class="nav-item" href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Gallery</h1>
+        <div class="img-select" id="imgselectfig">
+            <img src="Assets/Gallery01.jpg" alt="Image01" id="imgselect">
+            <span onclick="closeimgselect()">x</span>
+            <div id="imgText" class="img-text"></div>
+        </div>
+
+        <div class="img-gallery">
+            <img src="Assets/Gallery01.png" alt="image01"
+                onclick="openimgselect(this.src, 'The first IRO GEMS office in Beruwala, established in 2010 by my father, Shareef Thasleem. A humble beginning built through hardship, determination, and faith — this small space marked the start of his journey as an entrepreneur in the gem industry. From these modest surroundings, he took the first courageous step toward building a legacy that continues to shine today.')">
+            <img src="Assets/Gallery02.png" alt="image02" onclick="openimgselect(this.src, '2014')">
+            <img src="Assets/Gallery03.png" alt="image03" onclick="openimgselect(this.src, '2019')">
+            <img src="Assets/Gallery04.png" alt="image04" onclick="openimgselect(this.src, '2025')">
+        </div>
+
+
+    </main>
+
+
+    <!--Footer-->
+    <div class="pagefooter">
+        <p>Developed by <a href="UmairPageEditor.html" target="_blank">Umair Thasleem</a></p>
+    </div>
+    <div class="pagefooter">
+        <p>&copy; 2025 IRO GEMS. All rights reserved.</p>
+
+    </div>
+
+    <!-- back to top -->
+    <a class="btt-btn" href="#top" id="back-to-top"><img src="Assets/btt.svg" class="btt-icon"
+            alt="Back To Top Icon" /></a>
+
+    <script>
+        var imgselectfig = document.getElementById("imgselectfig");
+        var imgselect = document.getElementById("imgselect");
+        var imgText = document.getElementById("imgText");
+
+        function openimgselect(pic, text) {
+            imgselectfig.style.display = "flex";
+            imgselect.src = pic;
+            imgText.innerHTML = text;
+        }
+
+        function closeimgselect() {
+            imgselectfig.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

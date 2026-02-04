@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - IRO GEMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="feedback.css"> <!-- Reusing form styles -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="auth-state.js"></script>
+    <script type="module" src="auth.js"></script>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">
+            <img src="Assets/LogoNew1.png" alt="logo" class="logo" />
+        </a>
+        <ul>
+            <li><a class="nav-item" href="index.html">Home</a></li>
+            <li><a class="nav-item" href="gallery.html">Gallery</a></li>
+            <li><a class="nav-item" href="shop.html">Shop</a></li>
+            <li><a class="nav-item" href="feedback.html">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Login</h1>
+        <form id="login-form" class="feedback-form">
+            <div class="input-container">
+                <label for="login-email">Email or Mobile Number <span class="red">*</span></label>
+                <input id="login-email" type="text" required placeholder="Enter email or mobile number">
+            </div>
+
+            <div class="input-container">
+                <label for="login-password">Password <span class="red">*</span></label>
+                <input id="login-password" type="password" required placeholder="Enter your password">
+            </div>
+
+            <div class="button-container">
+                <button class="button" type="submit">Login</button>
+            </div>
+
+            <p style="margin-top: 20px; font-size: 16px; text-align: center;">
+                Don't have an account? <a href="signup.html" style="color: var(--primary);">Sign Up</a>
+            </p>
+        </form>
+    </main>
+
+    <div class="pagefooter">
+        <p>&copy; 2025 IRO GEMS. All rights reserved.</p>
+    </div>
+</body>
+
+</html>

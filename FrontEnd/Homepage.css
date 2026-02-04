@@ -1,0 +1,116 @@
+/* Home Page Styles */
+.hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 32px;
+}
+
+.hero h1 {
+    text-align: center;
+    font-size: 60px;
+}
+
+.hero p {
+    text-align: center;
+    font-size: 18px;
+    color: var(--zinc-400);
+    max-width: 80%;
+    margin: 10px 0;
+}
+
+.hero .gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 52px;
+    gap: 32px;
+}
+
+.hero .gallery .item {
+    width: 100%;
+    height: 27rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 20px;
+    background-color: var(--zinc-800);
+    border-radius: 18px;
+    transition: var(--general-transition);
+}
+
+.hero .gallery .item:hover {
+    transform: scale(1.03);
+    box-shadow: rgba(75, 75, 75, 0.1) 0px 4px 12px;
+}
+
+.hero .gallery .item span {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.hero .gallery .item img {
+    width: 200px;
+}
+
+.hero .gallery .item a {
+    text-decoration: none;
+    color: var(--zinc-500);
+    font-weight: 500;
+    font-size: 18px;
+    transition: var(--general-transition);
+    display: inline-flex;
+    justify-content: start;
+    align-items: center;
+
+    .right-arrow {
+        margin-left: 4px;
+        width: 10px;
+        transition: var(--general-transition);
+
+
+    }
+
+    .right-arrow path {
+
+        stroke: var(--zinc-500);
+    }
+}
+
+.hero .gallery .item a:hover {
+    color: var(--zinc-300);
+
+    i {
+        margin-left: 8px;
+    }
+}
+
+.home-section {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 64px 72px;
+    margin: 24px 0;
+
+    .text {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+
+        p {
+            margin-bottom: 45px;
+            color: var(--zinc-400);
+        }
+    }
+
+    img {
+        width: 520px;
+    }
+}

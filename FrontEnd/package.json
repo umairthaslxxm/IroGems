@@ -1,0 +1,11 @@
+{
+    "name": "iro-gems-frontend",
+    "version": "1.0.0",
+    "description": "Frontend for IRO GEMS",
+    "scripts": {
+        "start": "serve ."
+    },
+    "dependencies": {
+        "serve": "^14.2.0"
+    }
+}

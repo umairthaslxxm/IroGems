@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    opacity: 1;
+    transition: opacity 2s;
+    background-image: url("Assets/splashbgk.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #121111;
+
+}
+
+#splash.fade {
+    opacity: 0
+}
+
+
+
+.container {
+    /* background-color:rgba(216, 191, 216, 0.7); */
+    padding: 20px 20px 20px 20px;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    font-size: 20px;
+
+}
+
+.center {
+    width: 50%;
+}
+
+.details hr {
+    width: 20%;
+}
+
+.details {
+    color: rgb(209, 255, 221);
+}
+
+.details h2 {
+    margin-bottom: 0;
+}
+
+footer {
+    background-color: #ffffff;
+
+}
+
+footer h5 {
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 20px 0 20px;
+
+}
+
+.editor {
+    color: rgb(0, 0, 0);
+}
+
+.motto {
+    font-size: 18px;
+    border-radius: 20px;
+
+}

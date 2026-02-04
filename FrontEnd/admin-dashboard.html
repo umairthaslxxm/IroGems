@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - IRO GEMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="payment.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .side-nav {
+            width: 250px;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .side-nav button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: transparent;
+            color: #ccc;
+            border: 1px solid transparent;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .side-nav button.active,
+        .side-nav button:hover {
+            background: var(--primary);
+            color: black;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .side-nav button:last-child {
+            margin-top: 20px;
+            border: 1px solid #ff4444;
+            color: #ff4444;
+        }
+
+        .side-nav button:last-child:hover {
+            background: #ff4444;
+            color: white;
+        }
+
+        .content-area {
+            flex: 1;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 8px;
+            min-height: 500px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Product Form Styles */
+        .product-form {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .product-form h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ccc;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: white;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #000;
+            color: var(--primary);
+        }
+
+        tr:hover {
+            background-color: #222;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+
+        .edit-btn {
+            background: #1e90ff;
+            color: white;
+        }
+
+        .delete-btn {
+            background: #ff4444;
+            color: white;
+        }
+
+        .product-img-thumb {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">
+            <img src="Assets/LogoNew1.png" alt="logo" class="logo" />
+        </a>
+        <div style="color: white; font-weight: bold;">ADMIN PANEL</div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="side-nav">
+            <button class="tab-btn active" data-tab="products">Manage Products</button>
+            <button class="tab-btn" data-tab="orders">View Orders</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+
+        <!-- Content -->
+        <div class="content-area">
+
+            <!-- Products Tab -->
+            <div id="products" class="tab-content active">
+                <h2>Product Management</h2>
+
+                <!-- Add/Edit Form -->
+                <div class="product-form">
+                    <h3 id="form-title">Add New Product</h3>
+                    <form id="product-form">
+                        <input type="hidden" id="p-id">
+                        <div class="form-grid">
+                            <div>
+                                <label for="p-name">Title <span class="red">*</span></label>
+                                <input type="text" id="p-name" required>
+                            </div>
+                            <div>
+                                <label for="p-price">Price (LKR) <span class="red">*</span></label>
+                                <input type="number" id="p-price" required>
+                            </div>
+
+                            <!-- New Fields -->
+                            <div>
+                                <label for="p-cts">Carats (Cts)</label>
+                                <input type="number" step="0.01" id="p-cts">
+                            </div>
+                            <div>
+                                <label for="p-treatment">Treatment</label>
+                                <select id="p-treatment">
+                                    <option value="Unspecified">Unspecified</option>
+                                    <option value="Heated">Heated</option>
+                                    <option value="Natural">Natural</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="p-jewelry">Jewelry Type</label>
+                                <select id="p-jewelry">
+                                    <option value="">-- Select --</option>
+                                    <option value="Ring">Ring</option>
+                                    <option value="Necklace">Necklace</option>
+                                    <option value="Earring">Earring</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="p-image">Image</label>
+                                <input type="file" id="p-image" accept="image/*">
+                            </div>
+
+                            <div class="full-width">
+                                <label for="p-desc">Description</label>
+                                <textarea id="p-desc"></textarea>
+                            </div>
+
+                            <div class="full-width">
+                                <button type="submit" class="button">Save Product</button>
+                                <button type="button" id="cancel-edit" class="button"
+                                    style="background:#555; display:none;">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Product List -->
+                <h3>Product List</h3>
+                <div id="product-list-container">Loading products...</div>
+            </div>
+
+            <!-- Orders Tab -->
+            <div id="orders" class="tab-content">
+                <h2>Customer Orders</h2>
+                <button class="button" id="refresh-orders" style="margin-bottom: 15px;">Refresh Orders</button>
+                <div id="orders-list-container">Loading orders...</div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div id="order-modal" class="modal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
+        <div
+            style="background:#1a1a1a; padding:30px; border-radius:8px; width:90%; max-width:600px; color:white; border:1px solid #444; max-height:90vh; overflow-y:auto;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <h2 style="margin:0; color:var(--primary);">Order Details</h2>
+                <button onclick="closeModal()"
+                    style="background:transparent; border:none; color:white; font-size:24px; cursor:pointer;">&times;</button>
+            </div>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+    <script>
+        function closeModal() {
+            document.getElementById('order-modal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

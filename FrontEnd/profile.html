@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - IRO GEMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="feedback.css"> <!-- Reuse form styles -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="auth-state.js"></script>
+    <script type="module" src="profile.js"></script>
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .side-nav {
+            width: 250px;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .side-nav button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: transparent;
+            color: #ccc;
+            border: 1px solid transparent;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .side-nav button.active,
+        .side-nav button:hover {
+            background: var(--primary);
+            color: black;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .content-area {
+            flex: 1;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 8px;
+            min-height: 400px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .info-group {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .info-label {
+            color: var(--primary);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Table Styles Reuse */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: white;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #000;
+            color: var(--primary);
+        }
+
+        tr:hover {
+            background-color: #222;
+        }
+
+        .status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .status.Pending {
+            background-color: #ffd700;
+            color: black;
+        }
+
+        .status.Processing {
+            background-color: #1e90ff;
+            color: white;
+        }
+
+        .status.Shipped {
+            background-color: #32cd32;
+            color: black;
+        }
+
+        .status.Delivered {
+            background-color: #008000;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">
+            <img src="Assets/LogoNew1.png" alt="logo" class="logo" />
+        </a>
+        <ul>
+            <li><a class="nav-item" href="index.html">Home</a></li>
+            <li><a class="nav-item" href="gallery.html">Gallery</a></li>
+            <li><a class="nav-item" href="shop.html">Shop</a></li>
+            <li><a class="nav-item" href="feedback.html">Feedback</a></li>
+            <!-- Auth links injected by auth-state.js -->
+        </ul>
+    </nav>
+
+    <main>
+        <div class="profile-container">
+            <!-- Sidebar Navigation -->
+            <div class="side-nav">
+                <button class="tab-btn active" data-tab="personal">Personal Data</button>
+                <button class="tab-btn" data-tab="orders">Order History</button>
+                <button class="tab-btn" data-tab="security">Security</button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+
+                <!-- Personal Data Tab -->
+                <div id="personal" class="tab-content active">
+                    <h2>Personal Data</h2>
+                    <div id="personal-data-loading">Loading...</div>
+                    <div id="personal-data-display" style="display: none;">
+                        <div class="info-group">
+                            <div class="info-label">First Name</div>
+                            <div class="info-value" id="disp-firstName">-</div>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">Last Name</div>
+                            <div class="info-value" id="disp-lastName">-</div>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">Account Name</div>
+                            <div class="info-value" id="disp-accountName">-</div>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">Mobile Number</div>
+                            <div class="info-value" id="disp-mobile">-</div>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-label">Email</div>
+                            <div class="info-value" id="disp-email">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order History Tab -->
+                <div id="orders" class="tab-content">
+                    <h2>Order History</h2>
+                    <p>Track your past purchases here.</p>
+                    <div id="orders-container">Loading orders...</div>
+                </div>
+
+                <!-- Security Tab -->
+                <div id="security" class="tab-content">
+                    <h2>Security</h2>
+                    <p>Update your password.</p>
+                    <form id="change-password-form" class="feedback-form"
+                        style="width: 100%; max-width: 400px; margin: 0;">
+                        <div class="input-container">
+                            <label for="new-password">New Password</label>
+                            <input id="new-password" type="password" required placeholder="Min 6 characters">
+                        </div>
+                        <div class="button-container">
+                            <button class="button" type="submit">Change Password</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="pagefooter">
+        <p>&copy; 2025 IRO GEMS. All rights reserved.</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IRO GEMS — Home</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="Homepage.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+
+  <!-- Scripts -->
+  <script src="scripts.js" defer></script>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="auth-state.js"></script>
+
+  <style>
+    /* Background Image for Homepage */
+    body {
+      background-image: url("Assets/HomepageBackground.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Optional overlay for text readability */
+    .hero {
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">
+      <img src="Assets/LogoNew1.png" alt="IRO GEMS Logo" class="logo" />
+    </a>
+    <ul>
+      <li><a class="nav-item active" href="home.html">Home</a></li>
+      <li><a class="nav-item" href="gallery.html">Gallery</a></li>
+      <li><a class="nav-item" href="shop.html">Shop</a></li>
+      <li><a class="nav-item" href="feedback.html">Feedback</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Welcome to IRO GEMS</h1>
+      <p>
+        At IRO GEMS, we bring you an exclusive collection of precious and semi-precious gemstones
+        sourced from trusted miners around the world. Each gem is handpicked for its brilliance,
+        authenticity, and natural beauty. Whether you're seeking timeless jewellery pieces,
+        investment-grade stones, or customized gemstone orders, our platform ensures transparency,
+        quality, and craftsmanship you can trust.
+      </p>
+      <a href="shop.html" class="btn">Shop Now</a>
+    </section>
+
+    <!-- Innovative Features -->
+    <section class="features" aria-label="Platform Features">
+      <div class="feature">
+        <img src="Assets/ai-consultant.png" alt="AI Virtual Gem Consultant" />
+        <h3>AI Virtual Gem Consultant</h3>
+        <p>
+          Get expert recommendations powered by AI. Our smart assistant suggests the perfect gem
+          based on your style, budget, and purpose.
+        </p>
+      </div>
+
+      <div class="feature">
+        <img src="Assets/Ai-try-on.jpg" alt="Ai-Virtual Try-On" />
+        <h3>AR Virtual Try-On</h3>
+        <p>
+          Experience gemstones before you buy. Preview rings, necklaces, or earrings in real time
+          using your camera or a photo.
+        </p>
+      </div>
+
+      <div class="feature">
+        <img src="Assets/E-Platform.jpg" alt="Secure E-Commerce Platform" />
+        <h3>Secure E-Commerce</h3>
+        <p>
+          Shop with confidence via encrypted checkout, verified listings, and trusted global payment
+          gateways.
+        </p>
+      </div>
+
+      <div class="feature">
+        <img src="Assets/Transparency.jpg" alt="Authenticity & Transparency" />
+        <h3>Authenticity & Transparency</h3>
+        <p>
+          Every gemstone includes certification and sourcing details, building lasting trust between
+          sellers and buyers.
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="home-section" id="gallery">
+      <div class="text">
+        <h1>Gallery</h1>
+        <p>
+          Explore high-resolution visuals of our curated gemstone selections, cuts, and jewellery
+          settings. Get inspired by colour, clarity, and craftsmanship.
+        </p>
+        <a href="gallery.html" class="button">
+          View Gallery
+          <img src="Assets/button-arrow.svg" class="button-arrow" alt="View Gallery" />
+        </a>
+      </div>
+      <img src="Assets/gallery.svg" alt="Gem Gallery Illustration" />
+    </section>
+
+    <!-- Shop Section -->
+    <section class="home-section" id="shop">
+      <div class="text">
+        <h1>Shop</h1>
+        <p>
+          Browse certified Rubies, Sapphires, Emeralds, and more. Enjoy an easy, secure shopping
+          experience with global shipping.
+        </p>
+        <a href="shop.html" class="button">
+          Visit Shop
+          <img src="Assets/button-arrow.svg" class="button-arrow" alt="Visit Shop" />
+        </a>
+      </div>
+      <img src="Assets/shop.svg" alt="Shop Illustration" />
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="home-section" id="feedback">
+      <img src="Assets/feedback.svg" alt="Feedback Illustration" />
+      <div class="text">
+        <h1>Feedback</h1>
+        <p>
+          Tell us about your experience. Your feedback helps us improve product selections, service,
+          and overall platform quality.
+        </p>
+        <a href="feedback.html" class="button">
+          Provide Feedback
+          <img src="Assets/button-arrow.svg" class="button-arrow" alt="Provide Feedback" />
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div class="pagefooter">
+    <p>Developed by Umair Thasleem</p>
+  </div>
+  <div class="pagefooter">
+    <p>&copy; 2025 IRO GEMS. All rights reserved.</p>
+  </div>
+
+  <!-- Back to Top -->
+  <a class="btt-btn" href="#top" id="back-to-top">
+    <img src="Assets/btt.svg" class="btt-icon" alt="Back To Top" />
+  </a>
+</body>
+
+</html>
